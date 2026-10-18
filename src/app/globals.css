@@ -62,3 +62,117 @@ td input {
   gap: 12px;
   align-items: center;
 }
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  border-top: 1px solid #ddd;
+  margin-top: 16px;
+}
+
+.notice {
+  background: #fff6d6;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* ---------- Worksheet pages ---------- */
+
+.sheet {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20mm 15mm;
+  margin: 16px 0;
+  font-size: 14pt;
+  line-height: 1.8;
+  min-height: 200mm;
+}
+
+.sheet-header h2 {
+  margin: 0 0 4px;
+  font-size: 18pt;
+}
+
+.sheet-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.instructions {
+  font-style: italic;
+  margin: 8px 0 16px;
+}
+
+.matching {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 32px;
+}
+
+.matching ol,
+.matching ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.matching li {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+
+.match-words {
+  counter-reset: item;
+}
+
+.match-words li {
+  counter-increment: item;
+}
+
+.match-words li::before {
+  content: counter(item) ". ";
+}
+
+.answer-key ol {
+  padding-left: 24px;
+}
+
+/* ---------- Printing ---------- */
+
+@page {
+  size: A4;
+  /* change to "letter" if you're in a Letter-paper country */
+  margin: 12mm;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .sheet {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    break-after: page;
+  }
+
+  .sheet:last-child {
+    break-after: auto;
+  }
+}
